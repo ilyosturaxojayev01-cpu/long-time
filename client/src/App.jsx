@@ -8,7 +8,7 @@ const ST = { kutilmoqda: 'Kutilmoqda', yolda: "Buyurtma yo'lda", yetkazildi: 'Ye
 
 async function api(path, method = 'GET', body) {
   let r;
-  try { r = await fetch('/api' + path, { method, headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + localStorage.getItem('token') }, body: body && JSON.stringify(body) }); }
+  try { r = await fetch('https://long-time-4.onrender.com/api' + path, { method, headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + localStorage.getItem('token') }, body: body && JSON.stringify(body) }); }
   catch (e) { throw new Error("Serverga ulanib bo'lmadi. Server (npm start) ishlayaptimi?"); }
   const d = await r.json().catch(() => null);
   if (r.status === 401 && path !== '/login') { localStorage.clear(); location.reload(); }
